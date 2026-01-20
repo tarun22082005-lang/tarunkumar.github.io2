@@ -8,60 +8,61 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+html{scroll-behavior:smooth}
+body{background:#050008;color:#fff;overflow-x:hidden}
+
+/* ================= INTRO ================= */
+.intro{
+  position:fixed;
+  inset:0;
+  background:#050008;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  animation:introFade 2.5s forwards;
+}
+.intro h1{
+  font-size:48px;
+  color:#a855f7;
+  text-shadow:0 0 40px #9333ea;
+  animation:introZoom 2s ease;
+}
+@keyframes introFade{
+  0%{opacity:1}
+  80%{opacity:1}
+  100%{opacity:0;visibility:hidden}
+}
+@keyframes introZoom{
+  from{transform:scale(.7)}
+  to{transform:scale(1)}
 }
 
-body{
-  background: linear-gradient(-45deg,#050008,#12001f,#1a0033,#050008);
-  background-size:400% 400%;
-  animation:bgMove 20s ease infinite;
-  color:#fff;
-  overflow-x:hidden;
-  scroll-behavior:smooth;
-}
-
-@keyframes bgMove{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+/* ================= NEURAL NETWORK BACKGROUND ================= */
+#neural{
+  position:fixed;
+  inset:0;
+  z-index:-2;
 }
 
 /* ================= NAVBAR ================= */
 nav{
   position:fixed;
-  width:100%;
   top:0;
-  left:0;
+  width:100%;
   padding:20px 60px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,.55);
   backdrop-filter:blur(10px);
   z-index:100;
 }
-
 nav h2{color:#a855f7}
-
-nav ul{
-  list-style:none;
-  display:flex;
-  gap:30px;
-}
-
-nav a{
-  text-decoration:none;
-  color:white;
-  transition:.3s;
-}
-
-nav a:hover{
-  color:#d8b4fe;
-}
+nav ul{display:flex;gap:30px;list-style:none}
+nav a{text-decoration:none;color:#fff;transition:.3s}
+nav a:hover{color:#a855f7;text-shadow:0 0 10px #a855f7}
 
 /* ================= HERO ================= */
 .hero{
@@ -71,131 +72,103 @@ nav a:hover{
   justify-content:center;
   text-align:center;
 }
-
 .hero-name{
   font-size:90px;
   font-weight:800;
-  background:linear-gradient(
-    90deg,
-    #7c3aed,
-    #ec4899,
-    #7c3aed
-  );
+  line-height:1.1;
+  background:linear-gradient(90deg,#7c3aed,#ec4899,#7c3aed);
   background-size:300%;
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  animation:gradientText 6s ease infinite;
+  animation:nameGradient 6s ease infinite,nameFloat 4s ease-in-out infinite;
 }
-
-@keyframes gradientText{
+@keyframes nameGradient{
   0%{background-position:0%}
   50%{background-position:100%}
   100%{background-position:0%}
 }
-
+@keyframes nameFloat{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+  100%{transform:translateY(0)}
+}
 .typing{
   margin-top:20px;
   color:#d8b4fe;
   height:30px;
 }
-
 .btn-glow{
   margin-top:30px;
-  padding:12px 30px;
+  padding:12px 32px;
   border-radius:30px;
-  border:1px solid #a855f7;
+  border:2px solid #a855f7;
   background:transparent;
-  color:white;
+  color:#fff;
   cursor:pointer;
+  box-shadow:0 0 15px #9333ea;
   transition:.3s;
 }
-
 .btn-glow:hover{
   background:#7c3aed;
+  box-shadow:0 0 35px #a855f7;
 }
 
 /* ================= SECTIONS ================= */
-section{
-  padding:100px 80px;
-}
-
+section{padding:100px 80px}
 section h2{
   font-size:40px;
   margin-bottom:40px;
-  background:linear-gradient(
-    90deg,
-    #7c3aed,
-    #ec4899,
-    #7c3aed
-  );
+  background:linear-gradient(90deg,#7c3aed,#ec4899,#7c3aed);
   background-size:300%;
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  animation:gradientText 6s ease infinite;
+  animation:nameGradient 6s ease infinite;
 }
 
-/* ================= ABOUT ================= */
-.about{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:40px;
-}
-
-.about-card{
+/* ================= CARDS ================= */
+.card{
+  position:relative;
   padding:40px;
   border-radius:22px;
   background:linear-gradient(
     135deg,
-    rgba(124,58,237,0.18),
-    rgba(236,72,153,0.18),
-    rgba(124,58,237,0.18)
+    rgba(124,58,237,.18),
+    rgba(236,72,153,.18),
+    rgba(124,58,237,.18)
   );
   background-size:300% 300%;
-  animation:violetPink 8s ease infinite;
+  animation:gradMove 10s ease infinite;
   backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,.15);
   transform-style:preserve-3d;
-  transition:transform .15s ease;
+  transition:.15s ease;
+  will-change:transform;
 }
-
-.about-card *{
-  transform:translateZ(30px);
+.card::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:24px;
+  background:linear-gradient(270deg,#7c3aed,#ec4899,#7c3aed);
+  background-size:400% 400%;
+  animation:borderMove 6s ease infinite;
+  z-index:-1;
 }
-
-@keyframes violetPink{
+@keyframes gradMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes borderMove{
   0%{background-position:0% 50%}
   50%{background-position:100% 50%}
   100%{background-position:0% 50%}
 }
 
-/* ================= SKILLS / PROJECTS ================= */
-.skills,.projects{
+.about,.skills,.projects,.certificates{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:30px;
-}
-
-.skill-box,.project{
-  padding:30px;
-  border-radius:22px;
-  text-align:center;
-  background:linear-gradient(
-    135deg,
-    rgba(124,58,237,0.18),
-    rgba(236,72,153,0.18),
-    rgba(124,58,237,0.18)
-  );
-  background-size:300% 300%;
-  animation:violetPink 8s ease infinite;
-  backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,0.15);
-  transform-style:preserve-3d;
-  transition:transform .15s ease;
-}
-
-.skill-box *,
-.project *{
-  transform:translateZ(30px);
 }
 
 /* ================= FOOTER ================= */
@@ -206,7 +179,6 @@ footer{
   border-top:1px solid rgba(168,85,247,.3);
 }
 
-/* ================= RESPONSIVE ================= */
 @media(max-width:900px){
   section{padding:80px 30px}
   .hero-name{font-size:55px}
@@ -216,6 +188,12 @@ footer{
 
 <body>
 
+<div class="intro">
+  <h1>Welcome</h1>
+</div>
+
+<canvas id="neural"></canvas>
+
 <nav>
   <h2>Portfolio</h2>
   <ul>
@@ -223,6 +201,8 @@ footer{
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#certificates">Certificates</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
@@ -235,111 +215,143 @@ footer{
 </section>
 
 <section id="about">
-  <h2>About Me</h2>
-  <div class="about">
-
-    <div class="about-card">
-      <p>
-        I am <strong>Tarun Kumar E</strong>, currently pursuing my
-        <strong>BCA in Data Science</strong> at
-        <strong>SRM Institute of Science and Technology</strong>.
-        I have a strong passion for working with data — transforming raw,
-        unstructured datasets into meaningful insights that support
-        informed decision-making.
-      </p>
-    </div>
-
-    <div class="about-card">
-      <p>
-        My primary interests lie in <strong>data analysis</strong>,
-        <strong>business analytics</strong>, and
-        <strong>machine learning</strong>. I enjoy exploring trends,
-        identifying patterns, and building predictive models that help
-        organizations understand past performance and anticipate future
-        outcomes.
-      </p>
-    </div>
-
-    <div class="about-card">
-      <p>
-        With hands-on experience in <strong>Python</strong>,
-        <strong>statistics</strong>, <strong>SQL</strong>,
-        <strong>data visualization</strong>, and
-        <strong>machine learning algorithms</strong>, I focus on converting
-        data into actionable strategies and solving real-world problems
-        using data-driven approaches.
-      </p>
-    </div>
-
-  </div>
+<h2>About Me</h2>
+<div class="about">
+  <div class="card tilt">I am Tarun Kumar E, currently pursuing my BCA in Data Science at SRM Institute of Science and Technology. I have a strong passion for working with data — transforming raw, unstructured datasets into meaningful insights that support informed decision-making.</div>
+  <div class="card tilt">My primary interests lie in data analysis, business analytics, and machine learning. I enjoy exploring trends, identifying patterns, and building predictive models that help organizations understand past performance and anticipate future outcomes.</div>
+  <div class="card tilt">With hands-on experience in Python, statistics, SQL, data visualization, and machine learning algorithms, I focus on converting data into actionable strategies. I am driven by curiosity, analytical thinking, and a desire to solve real-world problems using data-driven approaches.</div>
+</div>
 </section>
 
 <section id="skills">
-  <h2>Skills</h2>
-  <div class="skills">
-    <div class="skill-box">Python</div>
-    <div class="skill-box">SQL</div>
-    <div class="skill-box">Power BI</div>
-    <div class="skill-box">Tableau</div>
-    <div class="skill-box">Machine Learning</div>
-    <div class="skill-box">AWS</div>
-  </div>
+<h2>Skills</h2>
+<div class="skills">
+  <div class="card tilt">Power BI</div>
+  <div class="card tilt">Tableau</div>
+  <div class="card tilt">SQL</div>
+  <div class="card tilt">Python</div>
+  <div class="card tilt">Machine Learning</div>
+  <div class="card tilt">HDFS</div>
+  <div class="card tilt">AWS S3</div>
+  <div class="card tilt">AWS EC2</div>
+  <div class="card tilt">AWS SNS</div>
+  <div class="card tilt">AWS Route 53</div>
+  <div class="card tilt">AWS IAM</div>
+</div>
 </section>
 
 <section id="projects">
-  <h2>Projects</h2>
-  <div class="projects">
-    <div class="project">Heart Disease Analysis Dashboard</div>
-    <div class="project">Netflix Content Analysis</div>
-    <div class="project">Spotify Music Insights</div>
-    <div class="project">Sales Analysis Dashboard</div>
-  </div>
+<h2>Projects</h2>
+<div class="projects">
+  <div class="card tilt">Heart Disease Analysis Dashboard</div>
+  <div class="card tilt">Netflix Content Analysis Dashboard (Power BI)</div>
+  <div class="card tilt">Spotify Music Insights Dashboard (Power BI)</div>
+  <div class="card tilt">Sales Analysis Dashboard (Power BI)</div>
+  <div class="card tilt">Customer Churn Analysis</div>
+</div>
 </section>
 
-<footer>
-  © 2026 Tarun Kumar E
-</footer>
+<section id="certificates">
+<h2>Certificates</h2>
+<div class="certificates">
+  <div class="card">Mastering Gen AI and ChatGPT – GeeksforGeeks</div>
+  <div class="card">AWS Generative AI Foundations – AWS</div>
+  <div class="card">Exploratory Data Analysis – Great Learning</div>
+  <div class="card">Google Data Analytics – Great Learning</div>
+  <div class="card">TATA Data Analytics Job Simulation – Forage</div>
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<p>Email: tarun22082005@gmail.com</p>
+</section>
+
+<footer>© 2026 Tarun Kumar E</footer>
 
 <script>
-/* ================= TYPING EFFECT ================= */
+/* ===== Typing Effect ===== */
 const texts=[
-  "Transforming data into actionable insights",
-  "Data Analysis • Business Analytics • Machine Learning",
-  "Turning raw data into decisions"
+"Transforming data into actionable insights.",
+"Data analysis driven by real-world business problems.",
+"Building predictive models using machine learning.",
+"Turning raw datasets into meaningful decisions."
 ];
+let i=0,j=0,d=false;
+const t=document.getElementById("typing");
+(function type(){
+  t.textContent=texts[i].substring(0,j);
+  if(!d&&j<texts[i].length)j++;
+  else if(d&&j>0)j--;
+  else{d=!d;if(!d)i=(i+1)%texts.length}
+  setTimeout(type,d?60:100);
+})();
 
-let i=0,j=0,del=false;
-const el=document.getElementById("typing");
-
-function type(){
-  el.textContent=texts[i].substring(0,j);
-  if(!del && j<texts[i].length) j++;
-  else if(del && j>0) j--;
-  else{
-    del=!del;
-    if(!del) i=(i+1)%texts.length;
-  }
-  setTimeout(type,del?60:100);
-}
-type();
-
-/* ================= 3D MOUSE TILT ================= */
-document.querySelectorAll(
-  ".about-card,.skill-box,.project"
-).forEach(card=>{
-  card.addEventListener("mousemove",e=>{
-    const r=card.getBoundingClientRect();
+/* ===== 3D MOUSE TILT ===== */
+document.querySelectorAll(".tilt").forEach(c=>{
+  c.addEventListener("mousemove",e=>{
+    const r=c.getBoundingClientRect();
     const x=e.clientX-r.left;
     const y=e.clientY-r.top;
     const cx=r.width/2;
     const cy=r.height/2;
-    card.style.transform=
-      `rotateX(${-(y-cy)/16}deg) rotateY(${(x-cx)/16}deg)`;
+    c.style.transform=`rotateX(${-(y-cy)/16}deg) rotateY(${(x-cx)/16}deg)`;
   });
-  card.addEventListener("mouseleave",()=>{
-    card.style.transform="rotateX(0) rotateY(0)";
+  c.addEventListener("mouseleave",()=>{
+    c.style.transform="rotateX(0) rotateY(0)";
   });
 });
+
+/* ===== NEURAL NETWORK BACKGROUND ===== */
+const canvas=document.getElementById("neural");
+const ctx=canvas.getContext("2d");
+
+function resize(){
+  canvas.width=innerWidth;
+  canvas.height=innerHeight;
+}
+resize();
+addEventListener("resize",resize);
+
+const nodes=[...Array(90)].map(()=>({
+  x:Math.random()*canvas.width,
+  y:Math.random()*canvas.height,
+  vx:(Math.random()-.5)*.4,
+  vy:(Math.random()-.5)*.4
+}));
+
+(function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  nodes.forEach(n=>{
+    n.x+=n.vx;
+    n.y+=n.vy;
+
+    if(n.x<0||n.x>canvas.width)n.vx*=-1;
+    if(n.y<0||n.y>canvas.height)n.vy*=-1;
+
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,2,0,Math.PI*2);
+    ctx.fillStyle="#a855f7";
+    ctx.fill();
+  });
+
+  for(let i=0;i<nodes.length;i++){
+    for(let j=i+1;j<nodes.length;j++){
+      const dx=nodes[i].x-nodes[j].x;
+      const dy=nodes[i].y-nodes[j].y;
+      const dist=Math.hypot(dx,dy);
+      if(dist<130){
+        ctx.strokeStyle=`rgba(168,85,247,${1-dist/130})`;
+        ctx.beginPath();
+        ctx.moveTo(nodes[i].x,nodes[i].y);
+        ctx.lineTo(nodes[j].x,nodes[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animate);
+})();
 </script>
 
 </body>
