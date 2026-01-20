@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Purple Glow Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background: linear-gradient(-45deg,#050008,#12001f,#1a0033,#050008);
+  background-size:400% 400%;
+  animation:bgMove 20s ease infinite;
+  color:#fff;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+/* ===================== 3D MOUSE TILT ===================== */
+.about-card,
+.skill-box,
+.project{
+  transform-style:preserve-3d;
+  transition:transform 0.15s ease;
+  will-change:transform;
+}
+
+.about-card *,
+.skill-box *,
+.project *{
+  transform:translateZ(35px);
+}
+/* ========================================================= */
+
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  padding:20px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  z-index:100;
+}
+
+nav h2{color:#a855f7}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:30px;
+}
+
+nav a{
+  text-decoration:none;
+  color:white;
+  transition:.3s;
+}
+
+nav a:hover{
+  color:#a855f7;
+  text-shadow:0 0 10px #a855f7;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.hero-name{
+  font-size:90px;
+  font-weight:800;
+  background:linear-gradient(90deg,#9333ea,#a855f7,#ec4899);
+  background-size:300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:nameGradient 6s infinite;
+}
+
+@keyframes nameGradient{
+  0%{background-position:0%}
+  50%{background-position:100%}
+  100%{background-position:0%}
+}
+
+.typing{
+  margin-top:20px;
+  color:#c084fc;
+  height:30px;
+}
+
+.btn-glow{
+  margin-top:30px;
+  padding:12px 30px;
+  border-radius:30px;
+  border:2px solid #a855f7;
+  background:transparent;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 0 15px #9333ea;
+  transition:.3s;
+}
+
+.btn-glow:hover{
+  background:#9333ea;
+  box-shadow:0 0 40px #a855f7;
+}
+
+section{
+  padding:100px 80px;
+}
+
+section h2{
+  color:#a855f7;
+  font-size:40px;
+  margin-bottom:40px;
+}
+
+/* ABOUT */
+.about{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:40px;
+}
+
+.about-card{
+  padding:40px;
+  border-radius:22px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,0.15);
+  box-shadow:0 0 30px rgba(168,85,247,.4);
+}
+
+/* SKILLS + PROJECTS */
+.skills,.projects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+.skill-box,.project{
+  padding:30px;
+  border-radius:22px;
+  text-align:center;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,0.15);
+  box-shadow:0 0 30px rgba(168,85,247,.4);
+}
+
+.skill-box:hover,
+.project:hover{
+  box-shadow:0 0 60px #a855f7;
+}
+
+footer{
+  text-align:center;
+  padding:40px;
+  background:#06000a;
+  border-top:1px solid rgba(168,85,247,.3);
+}
+
+@media(max-width:900px){
+  section{padding:80px 30px}
+  .hero-name{font-size:55px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h2>Portfolio</h2>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div>
+    <h1 class="hero-name">Tarun Kumar</h1>
+    <div class="typing" id="typing"></div>
+    <button class="btn-glow">Download Resume</button>
+  </div>
+</section>
+
+<section id="about">
+<h2>About Me</h2>
+<div class="about">
+  <div class="about-card">
+    Passionate BCA Data Science student focused on analytics and insights.
+  </div>
+  <div class="about-card">
+    Skilled in Python, SQL, statistics and machine learning.
+  </div>
+  <div class="about-card">
+    Strong interest in real-world business problem solving.
+  </div>
+</div>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<div class="skills">
+  <div class="skill-box">Python</div>
+  <div class="skill-box">SQL</div>
+  <div class="skill-box">Power BI</div>
+  <div class="skill-box">Machine Learning</div>
+  <div class="skill-box">AWS</div>
+</div>
+</section>
+
+<section id="projects">
+<h2>Projects</h2>
+<div class="projects">
+  <div class="project">Heart Disease Analysis Dashboard</div>
+  <div class="project">Netflix Dashboard</div>
+  <div class="project">Spotify Insights</div>
+  <div class="project">Sales Analysis</div>
+</div>
+</section>
+
+<footer>
+  © 2026 Tarun Kumar
+</footer>
+
+<script>
+/* ================= TYPING ================= */
+const texts=[
+  "Transforming data into insights",
+  "Data Analytics & Machine Learning",
+  "Turning data into decisions"
+];
+let i=0,j=0,del=false;
+const el=document.getElementById("typing");
+
+function type(){
+  el.textContent=texts[i].substring(0,j);
+  if(!del && j<texts[i].length) j++;
+  else if(del && j>0) j--;
+  else{
+    del=!del;
+    if(!del) i=(i+1)%texts.length;
+  }
+  setTimeout(type,del?60:100);
+}
+type();
+
+/* ================= 3D TILT ================= */
+document.querySelectorAll(
+  ".about-card,.skill-box,.project"
+).forEach(card=>{
+  card.addEventListener("mousemove",e=>{
+    const r=card.getBoundingClientRect();
+    const x=e.clientX-r.left;
+    const y=e.clientY-r.top;
+    const cx=r.width/2;
+    const cy=r.height/2;
+    card.style.transform=
+      `rotateX(${-(y-cy)/14}deg) rotateY(${(x-cx)/14}deg)`;
+  });
+  card.addEventListener("mouseleave",()=>{
+    card.style.transform="rotateX(0) rotateY(0)";
+  });
+});
+</script>
+
+</body>
+</html>
