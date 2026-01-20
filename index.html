@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Purple Glow Portfolio</title>
+<title>Tarun Kumar E | Data Science Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -30,22 +30,7 @@ body{
   100%{background-position:0% 50%}
 }
 
-/* ===================== 3D MOUSE TILT ===================== */
-.about-card,
-.skill-box,
-.project{
-  transform-style:preserve-3d;
-  transition:transform 0.15s ease;
-  will-change:transform;
-}
-
-.about-card *,
-.skill-box *,
-.project *{
-  transform:translateZ(35px);
-}
-/* ========================================================= */
-
+/* ================= NAVBAR ================= */
 nav{
   position:fixed;
   width:100%;
@@ -79,7 +64,7 @@ nav a:hover{
   text-shadow:0 0 10px #a855f7;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 .hero{
   height:100vh;
   display:flex;
@@ -127,6 +112,7 @@ nav a:hover{
   box-shadow:0 0 40px #a855f7;
 }
 
+/* ================= SECTIONS ================= */
 section{
   padding:100px 80px;
 }
@@ -137,7 +123,7 @@ section h2{
   margin-bottom:40px;
 }
 
-/* ABOUT */
+/* ================= ABOUT ================= */
 .about{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
@@ -147,13 +133,45 @@ section h2{
 .about-card{
   padding:40px;
   border-radius:22px;
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(15px);
-  border:1px solid rgba(255,255,255,0.15);
-  box-shadow:0 0 30px rgba(168,85,247,.4);
+  background:rgba(20,0,40,0.55);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(168,85,247,0.4);
+  position:relative;
+  transform-style:preserve-3d;
+  transition:transform .15s ease;
+  will-change:transform;
+  animation:neonPulse 3.5s ease-in-out infinite alternate;
 }
 
-/* SKILLS + PROJECTS */
+.about-card::before{
+  content:"";
+  position:absolute;
+  inset:-3px;
+  border-radius:26px;
+  background:linear-gradient(120deg,#9333ea,#a855f7,#ec4899);
+  filter:blur(20px);
+  opacity:.7;
+  z-index:-1;
+}
+
+.about-card *{
+  transform:translateZ(35px);
+}
+
+@keyframes neonPulse{
+  from{
+    box-shadow:
+      0 0 15px rgba(168,85,247,.5),
+      0 0 30px rgba(168,85,247,.3);
+  }
+  to{
+    box-shadow:
+      0 0 40px rgba(236,72,153,.7),
+      0 0 80px rgba(168,85,247,.6);
+  }
+}
+
+/* ================= SKILLS / PROJECTS ================= */
 .skills,.projects{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -168,6 +186,14 @@ section h2{
   backdrop-filter:blur(15px);
   border:1px solid rgba(255,255,255,0.15);
   box-shadow:0 0 30px rgba(168,85,247,.4);
+  transform-style:preserve-3d;
+  transition:transform .15s ease;
+  will-change:transform;
+}
+
+.skill-box *,
+.project *{
+  transform:translateZ(35px);
 }
 
 .skill-box:hover,
@@ -175,6 +201,7 @@ section h2{
   box-shadow:0 0 60px #a855f7;
 }
 
+/* ================= FOOTER ================= */
 footer{
   text-align:center;
   padding:40px;
@@ -182,6 +209,7 @@ footer{
   border-top:1px solid rgba(168,85,247,.3);
 }
 
+/* ================= RESPONSIVE ================= */
 @media(max-width:900px){
   section{padding:80px 30px}
   .hero-name{font-size:55px}
@@ -203,59 +231,87 @@ footer{
 
 <section class="hero" id="home">
   <div>
-    <h1 class="hero-name">Tarun Kumar</h1>
+    <h1 class="hero-name">Tarun Kumar E</h1>
     <div class="typing" id="typing"></div>
     <button class="btn-glow">Download Resume</button>
   </div>
 </section>
 
 <section id="about">
-<h2>About Me</h2>
-<div class="about">
-  <div class="about-card">
-    Passionate BCA Data Science student focused on analytics and insights.
+  <h2>About Me</h2>
+  <div class="about">
+
+    <div class="about-card">
+      <p>
+        I am <strong>Tarun Kumar E</strong>, currently pursuing my
+        <strong>BCA in Data Science</strong> at
+        <strong>SRM Institute of Science and Technology</strong>.
+        I have a strong passion for working with data — transforming raw,
+        unstructured datasets into meaningful insights that support
+        informed decision-making.
+      </p>
+    </div>
+
+    <div class="about-card">
+      <p>
+        My primary interests lie in <strong>data analysis</strong>,
+        <strong>business analytics</strong>, and
+        <strong>machine learning</strong>. I enjoy exploring trends,
+        identifying patterns, and building predictive models that help
+        organizations understand past performance and anticipate future
+        outcomes.
+      </p>
+    </div>
+
+    <div class="about-card">
+      <p>
+        With hands-on experience in <strong>Python</strong>,
+        <strong>statistics</strong>, <strong>SQL</strong>,
+        <strong>data visualization</strong>, and
+        <strong>machine learning algorithms</strong>, I focus on converting
+        data into actionable strategies. I am driven by curiosity,
+        analytical thinking, and a desire to solve real-world problems
+        using data-driven approaches.
+      </p>
+    </div>
+
   </div>
-  <div class="about-card">
-    Skilled in Python, SQL, statistics and machine learning.
-  </div>
-  <div class="about-card">
-    Strong interest in real-world business problem solving.
-  </div>
-</div>
 </section>
 
 <section id="skills">
-<h2>Skills</h2>
-<div class="skills">
-  <div class="skill-box">Python</div>
-  <div class="skill-box">SQL</div>
-  <div class="skill-box">Power BI</div>
-  <div class="skill-box">Machine Learning</div>
-  <div class="skill-box">AWS</div>
-</div>
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="skill-box">Python</div>
+    <div class="skill-box">SQL</div>
+    <div class="skill-box">Power BI</div>
+    <div class="skill-box">Tableau</div>
+    <div class="skill-box">Machine Learning</div>
+    <div class="skill-box">AWS</div>
+  </div>
 </section>
 
 <section id="projects">
-<h2>Projects</h2>
-<div class="projects">
-  <div class="project">Heart Disease Analysis Dashboard</div>
-  <div class="project">Netflix Dashboard</div>
-  <div class="project">Spotify Insights</div>
-  <div class="project">Sales Analysis</div>
-</div>
+  <h2>Projects</h2>
+  <div class="projects">
+    <div class="project">Heart Disease Analysis Dashboard</div>
+    <div class="project">Netflix Content Analysis</div>
+    <div class="project">Spotify Music Insights</div>
+    <div class="project">Sales Analysis Dashboard</div>
+  </div>
 </section>
 
 <footer>
-  © 2026 Tarun Kumar
+  © 2026 Tarun Kumar E
 </footer>
 
 <script>
-/* ================= TYPING ================= */
+/* ================= TYPING EFFECT ================= */
 const texts=[
-  "Transforming data into insights",
-  "Data Analytics & Machine Learning",
-  "Turning data into decisions"
+  "Transforming data into actionable insights",
+  "Data Analysis • Business Analytics • Machine Learning",
+  "Turning raw data into decisions"
 ];
+
 let i=0,j=0,del=false;
 const el=document.getElementById("typing");
 
@@ -271,7 +327,7 @@ function type(){
 }
 type();
 
-/* ================= 3D TILT ================= */
+/* ================= 3D MOUSE TILT ================= */
 document.querySelectorAll(
   ".about-card,.skill-box,.project"
 ).forEach(card=>{
@@ -285,10 +341,11 @@ document.querySelectorAll(
       `rotateX(${-(y-cy)/14}deg) rotateY(${(x-cx)/14}deg)`;
   });
   card.addEventListener("mouseleave",()=>{
-    card.style.transform="rotateX(0) rotateY(0)";
+    card.style.transform="rotateX(0deg) rotateY(0deg)";
   });
 });
 </script>
 
 </body>
 </html>
+
